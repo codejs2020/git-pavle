@@ -6,16 +6,15 @@ const latinica = 'A,a,B,b,C,c,Č,č,Ć,ć,D,d,Dž,dž,Đ,đ,E,e,F,f,G,g,H,h,I,i,
 const cirilica = 'А,а,Б,б,Ц,ц,Ч,ч,Ћ,ћ,Д,д,Џ,џ,Ђ,ђ,Е,е,Ф,ф,Г,г,Х,х,И,и,Ј,ј,К,к,Л,л,Љ,љ,М,м,Н,н,Њ,њ,О,о,П,п,Р,р,С,с,Ш,ш,Т,т,У,у,В,в,З,з,Ж,ж'.split(',')
 
 function validirajCirilicu () {
-  for (let i of poljeTeksta.value.split("")) {
+  for (const i of poljeTeksta.value.split('')) {
     if (cirilica.includes(i)) {
-      validacija.innerHTML = 'Tekst je napisan u ćirilici'
-      break
+      return 'Tekst je napisan u ćirilici'
     } else if (latinica.includes(i)) {
-      validacija.innerHTML = 'Tekst je napisan u latinici'
+      return 'Tekst je napisan u latinici'
     } else {
-      validacija.innerHTML = 'Piši srpski da te ceo svet razume'
+      return 'Piši srpski da te ceo svet razume'
     }
   }
 }
 
-tasterZaValidaciju.addEventListener('click', validirajCirilicu)
+tasterZaValidaciju.addEventListener('click', function () { validacija.innerHTML = validirajCirilicu() })

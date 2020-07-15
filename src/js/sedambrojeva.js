@@ -2,11 +2,11 @@
 
 const poljeZaIspisBrojeva = document.getElementById('brojevi')
 const dugme = document.getElementById('dugme')
+const izvuceniBrojevi = []
 
-function generisiBrojeve () {
-  poljeZaIspisBrojeva.innerHTML = ' '
+function generisiBrojeve (odKoliko, doKoliko, brojIzvucenih) {
   const brojevi = []
-  for (let i = 1; i < 37; i++) {
+  for (let i = odKoliko; i <= doKoliko; i++) {
     brojevi.push(i)
   }
   for (let i = brojevi.length - 1; i > 0; i--) {
@@ -15,8 +15,11 @@ function generisiBrojeve () {
     brojevi[i] = brojevi[j]
     brojevi[j] = temp
   }
-  for (let i = 0; i < 7; i++) {
-    poljeZaIspisBrojeva.innerHTML += brojevi.pop() + '<br>'
+  for (let i = 0; i < brojIzvucenih; i++) {
+    izvuceniBrojevi.push(brojevi.pop())
   }
+  return izvuceniBrojevi
 }
-dugme.addEventListener('click', generisiBrojeve)
+dugme.addEventListener('click', function () {
+  poljeZaIspisBrojeva.innerHTML = generisiBrojeve(1, 36, 7)
+})

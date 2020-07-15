@@ -4,7 +4,7 @@ const redovi = document.getElementById('redovi')
 const kolone = document.getElementById('kolone')
 const dugme = document.getElementById('dugme')
 
-for (let i = 0; i < 21 + 1; i++) {
+for (let i = 0; i < 22; i++) {
   redovi.innerHTML += `<option>${i}</option>`
   kolone.innerHTML += `<option>${i}</option>`
 }
@@ -19,6 +19,6 @@ function generisiTabelu (brojRedova, brojKolona) {
     tabela += '</tr>'
   }
   tabela += '</table>'
-  domTabela.innerHTML = tabela
+  return tabela
 }
-dugme.addEventListener('click', generisiTabelu(parseInt(redovi.value), parseInt(kolone.value)))
+dugme.addEventListener('click', function () { domTabela.innerHTML = generisiTabelu(parseInt(redovi.value), parseInt(kolone.value)) })
